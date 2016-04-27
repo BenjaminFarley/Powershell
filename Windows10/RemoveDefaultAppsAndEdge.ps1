@@ -44,7 +44,6 @@ $fsar2 = New-Object System.Security.AccessControl.FileSystemAccessRule("CREATOR 
 $fsar3 = New-Object System.Security.AccessControl.FileSystemAccessRule("SYSTEM","Read","Allow")
 $fsar4 = New-Object System.Security.AccessControl.FileSystemAccessRule("Administrators","FullControl","Allow")
 $fsar5 = New-Object System.Security.AccessControl.FileSystemAccessRule("Users","Read","Allow")
-$fsar6 = New-Object System.Security.AccessControl.FileSystemAccessRule("TrustedInstaller","Read","Allow")
 $Acl.SetAccessRule($fsar1)
 Set-Acl $Directory $Acl
 $Acl.SetAccessRule($fsar2)
@@ -55,8 +54,6 @@ $Acl.SetAccessRule($fsar4)
 Set-Acl $Directory $Acl
 $Acl.SetAccessRule($fsar5)
 Set-Acl $Directory $Acl
-$Acl.SetAccessRule($fsar6)
-Set-Acl $Directory $Acl
 
-Remove-Item "C:\Windows\SystemApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\MicrosoftEdge.exe"
-Remove-Item "C:\Windows\SystemApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\MicrosoftEdgeCP.exe"
+Remove-Item "C:\Windows\SystemApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\MicrosoftEdge.exe" | Out-Null
+Remove-Item "C:\Windows\SystemApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\MicrosoftEdgeCP.exe" | Out-Null
