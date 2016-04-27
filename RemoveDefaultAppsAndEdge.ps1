@@ -14,7 +14,7 @@
     This script will not remove the tiles from the start menu on the account that this script is run.
     You will also still have some of the pending apps that need to be un-pinned on new user accounts.
 
-    This script might need additional editing if you require additional apps to be removed. Run the following
+    This script might require additional editing if you need additional apps to be removed. Run the following
     command for a list of installed apps and add the app name into the $AppsForRemoval list:
 
         Get-AppXPackage | Select Name | Sort Name
@@ -39,21 +39,23 @@ Remove-AppxPackage | Out-Null
 
 $Directory = "C:\Windows\SystemApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe"
 $Acl = Get-Acl $Directory
-$Ar1 = New-Object System.Security.AccessControl.FileSystemAccessRule("ALL APPLICATION PACKAGES","Read","Allow")
-$Ar2 = New-Object System.Security.AccessControl.FileSystemAccessRule("CREATOR OWNER","Read","Allow")
-$Ar3 = New-Object System.Security.AccessControl.FileSystemAccessRule("SYSTEM","Read","Allow")
-$Ar4 = New-Object System.Security.AccessControl.FileSystemAccessRule("Administrators","FullControl","Allow")
-$Ar5 = New-Object System.Security.AccessControl.FileSystemAccessRule("Users","Read","Allow")
-$Ar6 = New-Object System.Security.AccessControl.FileSystemAccessRule("TrustedInstaller","Read","Allow")
-$Acl.SetAccessRule($Ar1)
+$fsar1 = New-Object System.Security.AccessControl.FileSystemAccessRule("ALL APPLICATION PACKAGES","Read","Allow")
+$fsar2 = New-Object System.Security.AccessControl.FileSystemAccessRule("CREATOR OWNER","Read","Allow")
+$fsar3 = New-Object System.Security.AccessControl.FileSystemAccessRule("SYSTEM","Read","Allow")
+$fsar4 = New-Object System.Security.AccessControl.FileSystemAccessRule("Administrators","FullControl","Allow")
+$fsar5 = New-Object System.Security.AccessControl.FileSystemAccessRule("Users","Read","Allow")
+$fsar6 = New-Object System.Security.AccessControl.FileSystemAccessRule("TrustedInstaller","Read","Allow")
+$Acl.SetAccessRule($fsar1)
 Set-Acl $Directory $Acl
-$Acl.SetAccessRule($Ar2)
+$Acl.SetAccessRule($fsar2)
 Set-Acl $Directory $Acl
-$Acl.SetAccessRule($Ar3)
+$Acl.SetAccessRule($fsar3)
 Set-Acl $Directory $Acl
-$Acl.SetAccessRule($Ar4)
+$Acl.SetAccessRule($fsar4)
 Set-Acl $Directory $Acl
-$Acl.SetAccessRule($Ar5)
+$Acl.SetAccessRule($fsar5)
+Set-Acl $Directory $Acl
+$Acl.SetAccessRule($fsar6)
 Set-Acl $Directory $Acl
 
 Remove-Item "C:\Windows\SystemApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\MicrosoftEdge.exe"
