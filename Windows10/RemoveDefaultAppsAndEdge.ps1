@@ -24,10 +24,9 @@
 $AppsForRemoval='Microsoft.3DBuilder', 'Microsoft.BingFinance', 'Microsoft.BingNews', 'Microsoft.BingSports', 
 'Microsoft.BingWeather', 'Microsoft.ConnectivityStore', 'Microsoft.Getstarted', 'Microsoft.Messaging', 
 'Microsoft.MicrosoftOfficeHub', 'Microsoft.MicrosoftSolitaireCollection', 'Microsoft.Office.OneNote', 
-'Microsoft.Office.Sway', 'Microsoft.People', 'Microsoft.SkypeApp', 'Microsoft.Windows.ParentalControls', 
-'Microsoft.Windows.Photos', 'Microsoft.WindowsAlarms', 'Microsoft.WindowsCamera', 'microsoft.windowscommunicationsapps', 
-'Microsoft.WindowsMaps', 'Microsoft.WindowsSoundRecorder', 'Microsoft.WindowsStore', 'Microsoft.XboxApp', 
-'Microsoft.XboxGameCallableUI', 'Microsoft.XboxIdentityProvider', 'Microsoft.ZuneMusic', 'Microsoft.ZuneVideo'
+'Microsoft.Office.Sway', 'Microsoft.People', 'Microsoft.SkypeApp', 'Microsoft.Windows.Photos', 'Microsoft.WindowsAlarms', 
+'Microsoft.WindowsCamera', 'microsoft.windowscommunicationsapps', 'Microsoft.WindowsMaps', 'Microsoft.WindowsSoundRecorder', 
+'Microsoft.WindowsStore', 'Microsoft.XboxApp', 'Microsoft.ZuneMusic', 'Microsoft.ZuneVideo'
 
 Get-AppxProvisionedPackage -Online | Where-Object DisplayName -In $AppsForRemoval |
 Remove-ProvisionedAppxPackage -Online | Out-Null
